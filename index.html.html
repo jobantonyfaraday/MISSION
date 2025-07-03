@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Faraday's Kalavara</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://media.giphy.com/media/3o7aCTfyhYawdOXcFW/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    #login {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px cyan;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateY(-15px); }
+    }
+
+    input[type="password"], button {
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #content {
+      padding: 20px;
+      background-color: rgba(0,0,0,0.75);
+      border-radius: 15px;
+      margin: 20px;
+    }
+
+    h2 {
+      border-bottom: 2px solid cyan;
+      padding-bottom: 5px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    .upload-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    button#printBtn {
+      margin-top: 20px;
+      background: cyan;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div id="login">
+    <h2>Enter Password</h2>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkPassword()">Access</button>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content" class="hidden">
+    <h1>📘 Faraday's Kalavara</h1>
+
+    <div class="section">
+      <h2>Assignments</h2>
+      <ul id="assignments">
+        <li><a href="assignments/sample1.pdf" download>Sample Assignment 1</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Worksheets</h2>
+      <ul id="worksheets">
+        <li><a href="worksheets/sample2.pdf" download>Sample Worksheet</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Previous Year Questions (PYQs)</h2>
+      <ul id="pyqs">
+        <li><a href="pyqs/sample3.pdf" download>Sample PYQ</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Extra Notes</h2>
+      <ul id="notes">
+        <li><a href="notes/sample4.pdf" download>Sample Note</a></li>
+      </ul>
+    </div>
+
+    <div class="upload-section">
+      <h2>Upload Files (Admin Only)</h2>
+      <input type="file" id="fileInput" multiple>
+      <p style="font-size: 12px;">(This section is for your use only. It doesn't actually upload to a server unless hosted with PHP or similar backend.)</p>
+    </div>
+
+    <button id="printBtn" onclick="window.print()">🖨️ Print Page</button>
+  </div>
+
+  <script>
+    const correctPassword = "ALPHABOYS";
+
+    function checkPassword() {
+      const entered = document.getElementById("password").value;
+      if (entered === correctPassword) {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("content").classList.remove("hidden");
+      } else {
+        alert("Incorrect password!");
+      }
+    }
+  </script>
+</body>
+</html>
